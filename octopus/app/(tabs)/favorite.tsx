@@ -1,10 +1,10 @@
-import { Layout } from '@/src/components/Layout';
-import Ionicons from '@expo/vector-icons/Ionicons';
-import { StyleSheet, View, Text } from 'react-native';
 
-export default function TabTwoScreen() {
+import { StyleSheet, View, Text } from 'react-native';
+import { Layout } from '../../src/components/Layout';
+
+export default function FavoriteScreen() {
   return (
-   <Layout><Text>Explore here</Text></Layout>
+   <Layout><Text>Favorite here</Text></Layout>
   );
 }
 

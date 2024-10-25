@@ -1,17 +1,14 @@
 import { Tabs } from 'expo-router';
 import React from 'react';
+import { Colors } from '../../constants/Colors';
+import { TabBarIcon } from '../../src/components/navigation/TabBarIcon';
 
-import { TabBarIcon } from '@/src/components/navigation/TabBarIcon';
-import { Colors } from '@/constants/Colors';
-import { useColorScheme } from '@/hooks/useColorScheme';
 
 export default function TabLayout() {
-  const colorScheme = useColorScheme();
-
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
+        tabBarActiveTintColor: '#75A846',
         headerShown: false,
       }}>
       <Tabs.Screen
@@ -24,11 +21,20 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="explore"
+        name="favorite"
         options={{
           title: 'My Courses',
           tabBarIcon: ({ color, focused }) => (
             <TabBarIcon name={focused ? 'bookmark' : 'bookmark-outline'} color={color} />
+          ),
+        }}
+      />
+       <Tabs.Screen
+        name="community"
+        options={{
+          title: 'Community',
+          tabBarIcon: ({ color, focused }) => (
+            <TabBarIcon name={focused ? 'people-sharp' : 'people-outline'} color={color} />
           ),
         }}
       />
