@@ -1,12 +1,8 @@
 
-import { Text} from 'react-native';
-import { Layout } from '../../src/components/Layout';
-
+import { Community } from '@/screens/Community';
 
 export default function CommunityScreen() {
   return (
-    <Layout>
-      <Text>Community</Text>
-    </Layout>
+    <Community />
   );
 }
