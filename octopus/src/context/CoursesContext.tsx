@@ -1,10 +1,11 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState, useEffect, useMemo } from 'react';
 import { CourseProps } from '@components/Course/types';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 interface CourseContextProps {
+  newCourses: CourseProps[];
   bookmarkedCourses: string[];
-  allCourses: CourseProps[];
+  startedCourses: CourseProps[];
   toggleBookmark: (courseId: string) => void;
   isBookmarked: (courseId: string) => boolean;
   isLoading: boolean;
@@ -22,6 +23,15 @@ export const CourseContextProvider: React.FC<{ children: React.ReactNode }> = ({
   const [allCourses, setAllCourses] = useState<CourseProps[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);
+
+  const startedCourses = useMemo(() => {
+    return allCourses.filter(course => course.progress > 0);
+  }, [allCourses]);
+
+  const newCourses = useMemo(() => {
+    return allCourses.filter(course => course.progress === 0);
+  }, [allCourses]);
+
 
   const loadBookmarks = async () => {
     try {
@@ -83,8 +93,9 @@ export const CourseContextProvider: React.FC<{ children: React.ReactNode }> = ({
   return (
     <CourseContext.Provider 
       value={{ 
+        newCourses,
+        startedCourses,
         bookmarkedCourses, 
-        allCourses,
         toggleBookmark, 
         isBookmarked,
         isLoading,

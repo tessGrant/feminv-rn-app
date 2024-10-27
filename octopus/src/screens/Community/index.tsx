@@ -1,10 +1,15 @@
-import { Layout } from '@/components/Layout'
-import {Text} from 'react-native'
+import { Feed } from '@/components/Feed'
+import { View } from 'react-native'
+import { styles } from './styles'
+import { HeaderTitle } from '@/components/HeaderTitle'
 
 export const Community = () => {
   return (
-    <Layout>
-      <Text>Community</Text>
-    </Layout>
+    <View style={styles.feedContainer}>
+      <View style={styles.titleContainer}>
+      <HeaderTitle title={'Community Feed'} />
+      </View>
+      <Feed />
+    </View>
   )
 }

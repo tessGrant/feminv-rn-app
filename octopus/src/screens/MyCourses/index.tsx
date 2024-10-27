@@ -5,22 +5,21 @@ import {  useCourseContext } from '@/context/CoursesContext'
 import {Text, View} from 'react-native'
 
 export const MyCourses = () => {
-  const { allCourses, bookmarkedCourses } = useCourseContext();
-  const filteredCourses = allCourses.filter(course => 
+  const { newCourses, startedCourses, bookmarkedCourses } = useCourseContext();
+
+  const filteredCourses = [...startedCourses, ...newCourses].filter(course => 
     bookmarkedCourses.includes(course.id)
   );
 
-  console.log({allCourses})
-  console.log({filteredCourses})
   return (
-    
-      <Layout><View style={{ flex: 1 }}>
-      <HeaderTitle title={'Bookmarked Courses'} />
-      <CoursesList 
-        courses={filteredCourses}
-        isLoading={false}
-      />
-    </View></Layout>
+      <Layout>
+        <HeaderTitle title={'My Courses'} />
+
+        <CoursesList 
+          courses={filteredCourses}
+          isLoading={false}
+        />
+    </Layout>
    
   )
 }

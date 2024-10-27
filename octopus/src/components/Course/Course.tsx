@@ -23,12 +23,13 @@ export const CourseComponent = ({
     e.stopPropagation();
     toggleBookmark(id);
   };
+
     return (
         <TouchableOpacity onPress={onPress}>
           <View style={styles.card}>
            
             <View style={styles.progressBadge}>
-              <Text style={styles.progressText}>{`${Math.round(progress)}% completed`}</Text>
+              <Text style={styles.progressText}>{`${Math.round(progress * 100)}% completed`}</Text>
             </View>
     
             <View style={styles.imageContainer}>
