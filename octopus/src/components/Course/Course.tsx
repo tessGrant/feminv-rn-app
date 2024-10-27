@@ -4,9 +4,11 @@ import { Ionicons } from '@expo/vector-icons';
 import { CourseProps } from './types';
 import { styles } from './styles';
 import { formatDuration } from '@/utils/formatDuration';
+import { useCourseContext } from '@/context/CoursesContext';
 
 
 export const CourseComponent = ({
+  id,
     name,
     lessons,
     duration,
@@ -14,28 +16,37 @@ export const CourseComponent = ({
     coverImage,
     onPress,
   }: CourseProps) => {
+    const { isBookmarked, toggleBookmark } = useCourseContext();
+  const bookmarked = isBookmarked(id);
+
+  const handleBookmarkPress = (e: any) => {
+    e.stopPropagation();
+    toggleBookmark(id);
+  };
     return (
         <TouchableOpacity onPress={onPress}>
           <View style={styles.card}>
-            {/* Progress Badge */}
+           
             <View style={styles.progressBadge}>
               <Text style={styles.progressText}>{`${Math.round(progress)}% completed`}</Text>
             </View>
     
-            {/* Money Bills Image */}
             <View style={styles.imageContainer}>
               <Image
-                source={{uri: coverImage}} // Replace with your local image
+                source={{uri: coverImage}} 
                 style={styles.moneyImage}
                 resizeMode="contain"
               />
             </View>
     
-            {/* Bookmark Icon */}
-            <TouchableOpacity style={styles.bookmarkButton}>
-              <Ionicons name="bookmark-outline" size={24} color="black" />
+            <TouchableOpacity style={styles.bookmarkButton} onPress={handleBookmarkPress}>
+            <Ionicons 
+            name={bookmarked ? "bookmark" : "bookmark-outline"} 
+            size={24} 
+            color={bookmarked ? "#75A846" : "black"} 
+          />
             </TouchableOpacity>
-            {/* Course Info */}
+           
         <View style={styles.infoContainer}>
           <Text style={styles.title}>{name}</Text>
           <View style={styles.statsContainer}>

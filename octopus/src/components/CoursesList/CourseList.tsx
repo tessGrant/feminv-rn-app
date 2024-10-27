@@ -14,47 +14,47 @@ export const CoursesList = ({
     isLoading,
     error,
   }: CoursesListProps) => {
-    const renderItem = ({ item: course }: { item: CourseProps }) => (
-      <CourseComponent
-        {...course}
-        onPress={() => console.log(course.id)}
-      />
+
+  const renderItem = ({ item: course }: { item: CourseProps }) => (
+    <CourseComponent
+      {...course}
+      onPress={() => console.log(course.id)}
+    />
+  );
+
+  const renderError = () => (
+    <View style={styles.errorContainer}>
+      <Text style={styles.errorText}>{error}</Text>
+    </View>
+  );
+
+  if (isLoading) {
+    return (
+      <View style={styles.loadingContainer}>
+        <ActivityIndicator size="large" />
+      </View>
     );
-    // const renderEmpty = () => (
-    //     <View style={styles.emptyContainer}>
-    //       <Text style={styles.emptyText}>No courses available</Text>
-    //     </View>
-    //   );
-    
-      const renderError = () => (
-        <View style={styles.errorContainer}>
-          <Text style={styles.errorText}>{error}</Text>
-        </View>
-      );
-    
-      if (isLoading) {
-        return (
-          <View style={styles.loadingContainer}>
-            <ActivityIndicator size="large" />
-          </View>
-        );
-      }
-    
-      if (error) {
-        return renderError();
-      }
+  }
+
+  if (error) {
+    return renderError();
+  }
       return (
+        <View>
         <Carousel
-            loop={true}
-            width={250}
-            height={258}
-            snapEnabled={true}
-            pagingEnabled={true}
-            autoPlayInterval={2000}
-            data={courses}
-            style={{ width: "100%" }}
-            renderItem={renderItem}
+          loop={false}
+          width={250}
+          height={258}
+          data={courses}
+          style={{ width: "100%" }}
+          renderItem={renderItem}
+          panGestureHandlerProps={{
+            activeOffsetX: [-10, 10],
+          }}
+          snapEnabled={true}
+          defaultIndex={0}
         />
+      </View>
       );
     };
 

@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar"
-import { SafeAreaView, View} from "react-native"
+import { SafeAreaView, ScrollView, View} from "react-native"
 import { LayoutProps } from "./types"
 import { styles } from "./styles"
 
@@ -7,9 +7,9 @@ import { styles } from "./styles"
 export const Layout = ({children}: LayoutProps) => { 
   return (
     <SafeAreaView style={{flex: 1}}>
-        <View style={styles.container}>  
-        {children}
-        </View>
+      <ScrollView style={styles.container}>  
+      {children}
+      </ScrollView>
     <StatusBar style="dark" />
     </SafeAreaView>
   )
