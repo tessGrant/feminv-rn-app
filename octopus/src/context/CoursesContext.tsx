@@ -10,10 +10,9 @@ interface CourseContextProps {
   isBookmarked: (courseId: string) => boolean;
   isLoading: boolean;
   error: Error | null;
-  refreshCourses: () => Promise<void>;
 }
 
-const CourseContext = createContext<CourseContextProps | undefined>(undefined);
+export const CourseContext = createContext<CourseContextProps | undefined>(undefined);
 
 const BOOKMARK_STORAGE_KEY = '@bookmarks';
 const API_URL = 'http://localhost:3000/courses';
@@ -100,7 +99,6 @@ export const CourseContextProvider: React.FC<{ children: React.ReactNode }> = ({
         isBookmarked,
         isLoading,
         error,
-        refreshCourses
       }}
     >
       {children}

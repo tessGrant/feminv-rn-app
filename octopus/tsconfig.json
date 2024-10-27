@@ -3,6 +3,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "strict": true,
+    "types": ["jest", "@testing-library/jest-native"],
     "forceConsistentCasingInFileNames": true,
     "paths": {
       "@/*": ["src/*"],

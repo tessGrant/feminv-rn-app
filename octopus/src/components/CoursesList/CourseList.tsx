@@ -16,21 +16,23 @@ export const CoursesList = ({
   }: CoursesListProps) => {
 
   const renderItem = ({ item: course }: { item: CourseProps }) => (
-    <CourseComponent
-      {...course}
-      onPress={() => console.log(course.id)}
-    />
+    <View testID={`course-${course.id}`}>
+      <CourseComponent
+        {...course}
+        onPress={() => console.log(course.id)}
+      />
+    </View>
   );
 
   const renderError = () => (
-    <View style={styles.errorContainer}>
+    <View style={styles.errorContainer} testID="error-container">
       <Text style={styles.errorText}>{error}</Text>
     </View>
   );
 
   if (isLoading) {
     return (
-      <View style={styles.loadingContainer}>
+      <View style={styles.loadingContainer} testID="loading-indicator">
         <ActivityIndicator size="large" />
       </View>
     );

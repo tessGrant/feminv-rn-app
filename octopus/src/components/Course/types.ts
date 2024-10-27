@@ -7,7 +7,6 @@ export interface Lesson {
   export interface CourseProps {
     id: string;
     name: string;
-    description: string;
     lessons: Lesson[];
     coverImage: string;
     duration: number;
