@@ -1,15 +1,15 @@
 export interface Lesson {
-    id: string;
-    name: string;
-    duration: number;
-  }
+  id: string;
+  name: string;
+  duration: number;
+}
   
-  export interface CourseProps {
-    id: string;
-    name: string;
-    lessons: Lesson[];
-    coverImage: string;
-    duration: number;
-    progress: number;
-    onPress?: () => void;
-  }
+export interface CourseProps {
+  id: string;
+  name: string;
+  lessons: Lesson[];
+  coverImage: string;
+  duration: number;
+  progress: number;
+  onPress?: () => void;
+}

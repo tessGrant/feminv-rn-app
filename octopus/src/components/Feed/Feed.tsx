@@ -1,12 +1,10 @@
-// src/components/Feed/Feed.tsx
 import React from 'react';
 import { 
   FlatList, 
   ActivityIndicator, 
   RefreshControl,
   View,
-  Text,
-  StyleSheet,
+  Text
 } from 'react-native';
 import { Post } from '@/components/Post';
 import { useFeedPosts } from '@/hooks/usePosts';
@@ -70,4 +68,3 @@ export const Feed = () => {
     />
   );
 };
-

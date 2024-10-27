@@ -20,9 +20,7 @@ class PostsAPI {
     }
   
     async getPosts(page: number = 1): Promise<PaginatedResponse<MockPost>> {
-    
       await new Promise(resolve => setTimeout(resolve, ARTIFICIAL_DELAY));
-  
       const startIndex = (page - 1) * POSTS_PER_PAGE;
       const endIndex = startIndex + POSTS_PER_PAGE;
       const paginatedPosts = this.posts.slice(startIndex, endIndex);
@@ -37,15 +35,16 @@ class PostsAPI {
         },
       };
     }
+
     async likePost(postId: string): Promise<{ success: boolean }> {
         await new Promise(resolve => setTimeout(resolve, 500));
         return { success: true };
-      }
-    
-      async unlikePost(postId: string): Promise<{ success: boolean }> {
-        await new Promise(resolve => setTimeout(resolve, 500));
-        return { success: true };
-      }
     }
     
-    export const postsAPI = new PostsAPI();  
+    async unlikePost(postId: string): Promise<{ success: boolean }> {
+        await new Promise(resolve => setTimeout(resolve, 500));
+        return { success: true };
+    }
+}
+    
+export const postsAPI = new PostsAPI();  

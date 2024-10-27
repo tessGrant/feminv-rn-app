@@ -1,8 +1,7 @@
 import { CoursesList } from '@/components/CoursesList';
 import { HeaderTitle } from '@/components/HeaderTitle';
-import { Layout } from '@/components/Layout'
-import {  useCourseContext } from '@/context/CoursesContext'
-import {Text, View} from 'react-native'
+import { Layout } from '@/components/Layout';
+import {  useCourseContext } from '@/context/CoursesContext';
 
 export const MyCourses = () => {
   const { newCourses, startedCourses, bookmarkedCourses } = useCourseContext();
@@ -12,15 +11,12 @@ export const MyCourses = () => {
   );
 
   return (
-      <Layout>
-        <HeaderTitle title={'My Courses'} />
-
-        <CoursesList 
-          courses={filteredCourses}
-          isLoading={false}
-        />
+    <Layout>
+      <HeaderTitle title={'My Courses'} />
+      <CoursesList 
+        courses={filteredCourses}
+        isLoading={false}
+      />
     </Layout>
-   
   )
 }
-

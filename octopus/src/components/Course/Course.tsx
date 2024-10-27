@@ -1,22 +1,22 @@
 import React from 'react';
-import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, Image, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { CourseProps } from './types';
 import { styles } from './styles';
 import { formatDuration } from '@/utils/formatDuration';
 import { useCourseContext } from '@/context/CoursesContext';
 
-
 export const CourseComponent = ({
   id,
-    name,
-    lessons,
-    duration,
-    progress,
-    coverImage,
-    onPress,
+  name,
+  lessons,
+  duration,
+  progress,
+  coverImage,
+  onPress,
   }: CourseProps) => {
-    const { isBookmarked, toggleBookmark } = useCourseContext();
+  
+  const { isBookmarked, toggleBookmark } = useCourseContext();
   const bookmarked = isBookmarked(id);
 
   const handleBookmarkPress = (e: any) => {
@@ -24,29 +24,30 @@ export const CourseComponent = ({
     toggleBookmark(id);
   };
 
-    return (
-        <TouchableOpacity onPress={onPress}>
-          <View style={styles.card}>
-           
-            <View style={styles.progressBadge}>
-              <Text style={styles.progressText}>{`${Math.round(progress * 100)}% completed`}</Text>
-            </View>
+  return (
+    <TouchableOpacity onPress={onPress}>
+      <View style={styles.card}>
+        {progress > 0 && (
+        <View style={styles.progressBadge}>
+          <Text style={styles.progressText}>{`${Math.round(progress * 100)}% completed`}</Text>
+        </View>
+        )}
     
-            <View style={styles.imageContainer}>
-              <Image
-                source={{uri: coverImage}} 
-                style={styles.moneyImage}
-                resizeMode="contain"
-              />
-            </View>
+        <View style={styles.imageContainer}>
+          <Image
+            source={{uri: coverImage}} 
+            style={styles.moneyImage}
+            resizeMode="contain"
+          />
+        </View>
     
-            <TouchableOpacity style={styles.bookmarkButton} onPress={handleBookmarkPress}>
-            <Ionicons 
+        <TouchableOpacity style={styles.bookmarkButton} onPress={handleBookmarkPress}>
+          <Ionicons 
             name={bookmarked ? "bookmark" : "bookmark-outline"} 
             size={24} 
             color={bookmarked ? "#75A846" : "black"} 
           />
-            </TouchableOpacity>
+        </TouchableOpacity>
            
         <View style={styles.infoContainer}>
           <Text style={styles.title}>{name}</Text>

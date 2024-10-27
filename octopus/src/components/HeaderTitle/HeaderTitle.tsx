@@ -5,10 +5,9 @@ interface HeaderTextProps {
     title: string;
 }
 export const HeaderTitle = ({title}: HeaderTextProps) => {
-  const staticText = useMemo(()=>{
-      if(title.length){
-        return title;
-      }
+
+  const staticText = useMemo(()=> {
+    return title ?? ''
   }, [title]);
 
   return (

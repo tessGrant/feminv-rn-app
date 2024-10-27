@@ -1,7 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react-native';
 import { HeaderTitle } from './HeaderTitle';
-import { Text } from 'react-native';
 
 describe('HeaderTitle', () => {
   it('renders correctly with provided title', () => {
@@ -41,7 +40,7 @@ describe('HeaderTitle', () => {
     expect(firstRender).toBe(secondRender);
   });
 
-  // Test for edge cases
+
   it('handles long titles correctly', () => {
     const longTitle = 'This is a very long title that might need special handling in some cases';
     render(<HeaderTitle title={longTitle} />);

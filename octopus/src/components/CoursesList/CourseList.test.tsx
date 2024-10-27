@@ -5,50 +5,49 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 const renderWithGestureHandler = (component: React.ReactElement) => {
     return render(
-      <GestureHandlerRootView>{component}</GestureHandlerRootView>
+    <GestureHandlerRootView>{component}</GestureHandlerRootView>
     );
-  };
+};
 
 describe('CoursesList', () => {
 
     beforeEach(() => {
         jest.clearAllMocks();
-      });
-    
+    });
 
-  it('renders loading state correctly', () => {
+    it('renders loading state correctly', () => {
     renderWithGestureHandler(
-      <CoursesList
+        <CoursesList
         courses={[]}
         isLoading={true}
-      />
+        />
     );
 
     expect(screen.getByTestId('loading-indicator')).toBeTruthy();
-  });
+    });
 
-  it('renders error state correctly', async () => {
+    it('renders error state correctly', async () => {
     const errorMessage = 'Failed to load courses';
     renderWithGestureHandler(
-      <CoursesList
+        <CoursesList
         courses={[]}
         isLoading={false}
         error={errorMessage}
-      />
+        />
     );
 
     waitFor(() => expect(screen.getByText(errorMessage)).toBeTruthy());
-  });
+    });
 
-  it('renders empty state when no courses provided', async () => {
+    it('renders empty state when no courses provided', async () => {
     renderWithGestureHandler(
-      <CoursesList
+        <CoursesList
         courses={[]}
         isLoading={false}
-      />
+        />
     );
 
     waitFor(() => expect(screen.queryByTestId('course-1')).toBeNull());
-  });
+    });
 
 });
