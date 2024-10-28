@@ -25,6 +25,10 @@ export const Post: React.FC<PostProps> = ({ id, author, content, timestamp }) =>
       <Text style={styles.content}>{content}</Text>
       
       <TouchableOpacity
+        accessible={true}
+        accessibilityLabel="Like post"
+        accessibilityHint="Like or dislike this post"
+        accessibilityRole="button"
         onPress={() => toggleLike(id)}
         style={styles.likeButton}
       >

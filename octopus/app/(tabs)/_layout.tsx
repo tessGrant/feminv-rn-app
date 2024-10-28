@@ -18,7 +18,7 @@ export default function TabLayout() {
         options={{
           title: 'Home',
           tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'home' : 'home-outline'} color={color} />
+            <TabBarIcon accessibilityHint="Navigate to Home Screen" name={focused ? 'home' : 'home-outline'} color={color} />
           ),
         }}
       />
@@ -27,7 +27,7 @@ export default function TabLayout() {
         options={{
           title: 'My Courses',
           tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'bookmark' : 'bookmark-outline'} color={color} />
+            <TabBarIcon accessibilityHint="Navigate to My Courses Screen" name={focused ? 'bookmark' : 'bookmark-outline'} color={color} />
           ),
         }}
       />
@@ -36,7 +36,7 @@ export default function TabLayout() {
         options={{
           title: 'Community',
           tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'people-sharp' : 'people-outline'} color={color} />
+            <TabBarIcon accessibilityHint="Navigate to Community Screen" name={focused ? 'people-sharp' : 'people-outline'} color={color} />
           ),
         }}
       />

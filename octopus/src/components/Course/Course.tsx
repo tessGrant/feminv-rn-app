@@ -35,18 +35,26 @@ export const CourseComponent = ({
     
         <View style={styles.imageContainer}>
           <Image
+            accessibilityRole="image"
+            accessibilityLabel="Course thumbnail"
             source={{uri: coverImage}} 
             style={styles.moneyImage}
             resizeMode="contain"
           />
         </View>
     
-        <TouchableOpacity style={styles.bookmarkButton} onPress={handleBookmarkPress}>
-          <Ionicons 
-            name={bookmarked ? "bookmark" : "bookmark-outline"} 
-            size={24} 
-            color={bookmarked ? "#75A846" : "black"} 
-          />
+        <TouchableOpacity 
+          accessible={true}
+          accessibilityLabel="Bookmark course"
+          accessibilityHint="Adds course to My Courses list"
+          accessibilityRole="button"
+          style={styles.bookmarkButton}
+          onPress={handleBookmarkPress}>
+            <Ionicons 
+              name={bookmarked ? "bookmark" : "bookmark-outline"} 
+              size={24} 
+              color={bookmarked ? "#75A846" : "black"} 
+            />
         </TouchableOpacity>
            
         <View style={styles.infoContainer}>

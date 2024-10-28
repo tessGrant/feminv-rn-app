@@ -11,7 +11,7 @@ export const HeaderTitle = ({title}: HeaderTextProps) => {
   }, [title]);
 
   return (
-    <View style={styles.container} >
+    <View style={styles.container} accessibilityRole="header">
       <Text style={styles.text} testID="header-title-text">{staticText}</Text>
     </View>
   )

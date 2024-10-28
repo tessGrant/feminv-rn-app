@@ -15,12 +15,12 @@ export const AllCourses = () => {
 
     <Layout>
       {startedCourses?.length ? (
-        <View style={styles.listContainer}>
+        <View style={styles.listContainer} accessibilityHint="View a list of Started Courses">
           <HeaderTitle title='Continue Learning' />
           <CoursesList courses={startedCourses ?? []} />
         </View>
       ) : <ActivityIndicator />}
-      <View style={styles.listContainer}>
+      <View style={styles.listContainer} accessibilityHint="View a list of Suggested Courses">
         <HeaderTitle title={'You might also like'} />
         <CoursesList courses={newCourses ?? []} />
       </View>
